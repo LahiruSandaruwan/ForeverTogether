@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO Best Practices -->
+    <title>ForeverTogether | Wedding Invitation & RSVP</title>
+    <meta name="description" content="Celebrate our special day with us. Find our story, event details, and RSVP here.">
+    
+    <!-- Google Fonts: Playfair Display (Serif) & Inter (Sans-serif) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- AOS (Animate on Scroll) CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: {
+                            DEFAULT: '#FDFBF7',
+                        },
+                        emerald: {
+                            DEFAULT: '#2D4236',
+                            light: '#3A5445',
+                            dark: '#1F2E25'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 1.5s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-cream font-sans text-gray-800 antialiased selection:bg-emerald selection:text-cream overflow-x-hidden">
+
+    <!-- Header / Navigation -->
+    <header id="site-header" class="fixed w-full top-0 z-50 bg-cream/90 backdrop-blur-sm border-b border-gray-200 transition-all duration-300">
+        <div class="container mx-auto px-4 h-20 flex items-center justify-center">
+            <!-- [BUYER INSTRUCTION]: Update with your initials -->
+            <a href="#hero" class="font-serif text-2xl text-emerald tracking-wider hover:text-emerald-light transition-colors">E & J</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+            <!-- Background Image -->
+            <div class="absolute inset-0 z-0">
+                <!-- [BUYER INSTRUCTION]: Replace the 'src' URL with your own high-quality wedding photo -->
+                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Wedding Couple" class="w-full h-full object-cover object-center" />
+                <!-- Dark Green Tint Overlay -->
+                <div class="absolute inset-0 bg-emerald-dark/60 mix-blend-multiply"></div>
+            </div>
+            
+            <!-- Hero Content Container -->
+            <div class="relative z-10 container mx-auto px-4 text-center text-cream flex flex-col items-center animate-fade-in-up">
+                <span class="uppercase tracking-[0.3em] text-xs md:text-sm lg:text-base mb-4 font-light text-cream/90">Save the Date</span>
+                
+                <!-- [BUYER INSTRUCTION]: Replace with your names. Adjusted text sizes for mobile wrapping. -->
+                <h1 class="font-serif text-5xl sm:text-6xl md:text-8xl lg:text-9xl mb-4 md:mb-6 tracking-wide drop-shadow-md leading-tight">
+                    Emma & James
+                </h1>
+                
+                <!-- [BUYER INSTRUCTION]: Replace with your wedding date -->
+                <p class="font-serif text-lg sm:text-xl md:text-3xl mb-10 md:mb-12 italic text-cream/90">
+                    October 12, 2026
+                </p>
+
+                <!-- Countdown Timer -->
+                <div data-aos="zoom-in" data-aos-delay="500" class="flex space-x-3 sm:space-x-4 md:space-x-8 backdrop-blur-sm bg-emerald-dark/40 p-4 sm:p-6 md:p-8 rounded-xl border border-cream/20 shadow-2xl">
+                    <div class="flex flex-col items-center">
+                        <span id="days" class="font-serif text-2xl sm:text-3xl md:text-5xl mb-1">00</span>
+                        <span class="text-[10px] sm:text-xs md:text-sm uppercase tracking-widest text-cream/80">Days</span>
+                    </div>
+                    <span class="font-serif text-2xl sm:text-3xl md:text-5xl mb-1">:</span>
+                    <div class="flex flex-col items-center">
+                        <span id="hours" class="font-serif text-2xl sm:text-3xl md:text-5xl mb-1">00</span>
+                        <span class="text-[10px] sm:text-xs md:text-sm uppercase tracking-widest text-cream/80">Hours</span>
+                    </div>
+                    <span class="font-serif text-2xl sm:text-3xl md:text-5xl mb-1">:</span>
+                    <div class="flex flex-col items-center">
+                        <span id="minutes" class="font-serif text-2xl sm:text-3xl md:text-5xl mb-1">00</span>
+                        <span class="text-[10px] sm:text-xs md:text-sm uppercase tracking-widest text-cream/80">Mins</span>
+                    </div>
+                    <span class="font-serif text-2xl sm:text-3xl md:text-5xl mb-1">:</span>
+                    <div class="flex flex-col items-center">
+                        <span id="seconds" class="font-serif text-2xl sm:text-3xl md:text-5xl mb-1">00</span>
+                        <span class="text-[10px] sm:text-xs md:text-sm uppercase tracking-widest text-cream/80">Secs</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Story Section -->
+        <section id="our-story" class="py-20 md:py-32 bg-white overflow-hidden">
+            <div class="container mx-auto px-4 max-w-5xl">
+                <div class="text-center mb-12 md:mb-16" data-aos="fade-up">
+                    <span class="uppercase tracking-[0.2em] text-xs md:text-sm text-emerald-light/80 mb-2 block">The Journey</span>
+                    <h2 class="font-serif text-3xl md:text-5xl text-emerald">Our Story</h2>
+                </div>
+                
+                <div class="relative">
+                    <!-- Vertical Dashed Line (Desktop) -->
+                    <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 border-l-2 border-dashed border-emerald/30"></div>
+                    <!-- Vertical Dashed Line (Mobile) -->
+                    <div class="block md:hidden absolute left-6 h-full w-0.5 border-l-2 border-dashed border-emerald/30"></div>
+
+                    <!-- Milestone 1: How We Met -->
+                    <div class="relative flex flex-col md:flex-row items-center justify-between mb-16 md:mb-24 group" data-aos="fade-up">
+                        <!-- Node -->
+                        <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 mt-6 md:mt-0 w-4 h-4 md:w-5 md:h-5 bg-emerald rounded-full border-4 border-white shadow-md z-10 transition-transform duration-300 group-hover:scale-125"></div>
+                        
+                        <!-- Text Content -->
+                        <div class="w-full md:w-5/12 pl-12 md:pl-0 mb-6 md:mb-0 text-left md:text-right" data-aos="fade-right" data-aos-delay="100">
+                            <!-- [BUYER INSTRUCTION]: Replace date and text -->
+                            <p class="font-serif italic text-emerald-light mb-1">September 2018</p>
+                            <h3 class="text-xl md:text-2xl font-serif text-emerald mb-2 md:mb-3">How We Met</h3>
+                            <p class="text-gray-600 leading-relaxed text-sm md:text-base">
+                                It all started at a small coffee shop downtown. We reached for the same distressed copy of an old novel, sparking a conversation that would last for hours. Little did we know, that chance encounter was the beginning of our forever.
+                            </p>
+                        </div>
+                        
+                        <!-- Image Container -->
+                        <div class="w-full md:w-5/12 pl-12 md:pl-0" data-aos="fade-left" data-aos-delay="200">
+                            <div class="aspect-square md:aspect-[4/3] rounded-2xl overflow-hidden shadow-lg border-4 border-cream bg-gray-100">
+                                <!-- [BUYER INSTRUCTION]: Replace image URL -->
+                                <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="How We Met" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Milestone 2: The First Date -->
+                    <div class="relative flex flex-col md:flex-row-reverse items-center justify-between mb-16 md:mb-24 group" data-aos="fade-up">
+                        <!-- Node -->
+                        <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 mt-6 md:mt-0 w-4 h-4 md:w-5 md:h-5 bg-emerald rounded-full border-4 border-white shadow-md z-10 transition-transform duration-300 group-hover:scale-125"></div>
+                        
+                        <!-- Text Content -->
+                        <div class="w-full md:w-5/12 pl-12 md:pl-0 mb-6 md:mb-0 text-left" data-aos="fade-left" data-aos-delay="100">
+                            <!-- [BUYER INSTRUCTION]: Replace date and text -->
+                            <p class="font-serif italic text-emerald-light mb-1">October 2018</p>
+                            <h3 class="text-xl md:text-2xl font-serif text-emerald mb-2 md:mb-3">The First Date</h3>
+                            <p class="text-gray-600 leading-relaxed text-sm md:text-base">
+                                For our first official date, James planned a picnic by the lake at sunset. Between the nervous laughter, shared sandwiches, and the golden hour light, it became wonderfully clear that this was something truly special.
+                            </p>
+                        </div>
+                        
+                        <!-- Image Container -->
+                        <div class="w-full md:w-5/12 pl-12 md:pl-0" data-aos="fade-right" data-aos-delay="200">
+                            <div class="aspect-square md:aspect-[4/3] rounded-2xl overflow-hidden shadow-lg border-4 border-cream bg-gray-100">
+                                <!-- [BUYER INSTRUCTION]: Replace image URL -->
+                                <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="The First Date" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Milestone 3: The Proposal -->
+                    <div class="relative flex flex-col md:flex-row items-center justify-between group" data-aos="fade-up">
+                        <!-- Node -->
+                        <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 mt-6 md:mt-0 w-4 h-4 md:w-5 md:h-5 bg-emerald rounded-full border-4 border-white shadow-md z-10 transition-transform duration-300 group-hover:scale-125"></div>
+                        
+                        <!-- Text Content -->
+                        <div class="w-full md:w-5/12 pl-12 md:pl-0 mb-6 md:mb-0 text-left md:text-right" data-aos="fade-right" data-aos-delay="100">
+                            <!-- [BUYER INSTRUCTION]: Replace date and text -->
+                            <p class="font-serif italic text-emerald-light mb-1">December 2024</p>
+                            <h3 class="text-xl md:text-2xl font-serif text-emerald mb-2 md:mb-3">The Proposal</h3>
+                            <p class="text-gray-600 leading-relaxed text-sm md:text-base">
+                                Surrounded by winter snow in the mountains where we first went hiking together, James got down on one knee. With tears of joy and surrounded by the quiet beauty of nature, Emma said yes to a lifetime of adventures.
+                            </p>
+                        </div>
+                        
+                        <!-- Image Container -->
+                        <div class="w-full md:w-5/12 pl-12 md:pl-0" data-aos="fade-left" data-aos-delay="200">
+                            <div class="aspect-square md:aspect-[4/3] rounded-2xl overflow-hidden shadow-lg border-4 border-cream bg-gray-100">
+                                <!-- [BUYER INSTRUCTION]: Replace image URL -->
+                                <img src="https://images.unsplash.com/photo-1606216494056-b7b51bcbeeb6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="The Proposal" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+
+        <!-- Schedule / Event Details Section -->
+        <section id="schedule" class="py-20 md:py-32 bg-emerald text-cream overflow-hidden">
+            <div class="container mx-auto px-4 max-w-5xl">
+                <div class="text-center mb-12 md:mb-16" data-aos="fade-up">
+                    <span class="uppercase tracking-[0.2em] text-xs md:text-sm text-emerald-light mb-2 block">The Big Day</span>
+                    <h2 class="font-serif text-3xl md:text-5xl">Event Details</h2>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+                    <!-- The Ceremony Card -->
+                    <div data-aos="fade-up" data-aos-delay="100" class="border border-cream/20 rounded-2xl p-8 md:p-10 text-center hover:bg-emerald-light/20 transition-colors duration-300">
+                        <div class="w-14 h-14 md:w-16 md:h-16 mx-auto mb-6 flex items-center justify-center rounded-full bg-cream/10 border border-cream/30">
+                            <svg class="w-6 h-6 md:w-8 md:h-8 text-cream" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        
+                        <!-- [BUYER INSTRUCTION]: Update Event Details -->
+                        <h3 class="text-2xl md:text-3xl font-serif mb-2">The Ceremony</h3>
+                        <p class="text-base md:text-lg italic text-cream/80 mb-6">4:00 PM - 5:00 PM</p>
+                        
+                        <div class="mb-8 space-y-1 md:space-y-2 text-sm md:text-base">
+                            <p class="font-medium">St. Patrick's Cathedral</p>
+                            <p class="text-cream/80 leading-relaxed">123 Wedding Lane<br>New York, NY 10001</p>
+                            <p class="text-cream/80 pt-3"><span class="font-medium text-cream">Dress Code:</span> Black Tie Optional</p>
+                        </div>
+                        
+                        <!-- [BUYER INSTRUCTION]: Replace '#' with your Google Maps link -->
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="inline-block bg-cream text-emerald font-medium py-3 px-6 rounded-md shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-300 w-full sm:w-auto text-sm md:text-base">
+                            View on Google Maps
+                        </a>
+                    </div>
+
+                    <!-- The Reception Card -->
+                    <div data-aos="fade-up" data-aos-delay="200" class="border border-cream/20 rounded-2xl p-8 md:p-10 text-center hover:bg-emerald-light/20 transition-colors duration-300">
+                        <div class="w-14 h-14 md:w-16 md:h-16 mx-auto mb-6 flex items-center justify-center rounded-full bg-cream/10 border border-cream/30">
+                            <svg class="w-6 h-6 md:w-8 md:h-8 text-cream" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 15.546c-.523 0-1.046.151-1.5.454a2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.701 2.701 0 00-1.5-.454M9 6v2m3-2v2m3-2v2M9 3h.01M12 3h.01M15 3h.01M21 21v-7a2 2 0 00-2-2H5a2 2 0 00-2 2v7h18zm-3-9v-2a2 2 0 00-2-2H8a2 2 0 00-2 2v2h12z"></path></svg>
+                        </div>
+                        
+                        <!-- [BUYER INSTRUCTION]: Update Event Details -->
+                        <h3 class="text-2xl md:text-3xl font-serif mb-2">The Reception</h3>
+                        <p class="text-base md:text-lg italic text-cream/80 mb-6">5:30 PM - Midnight</p>
+                        
+                        <div class="mb-8 space-y-1 md:space-y-2 text-sm md:text-base">
+                            <p class="font-medium">The Grand Plaza Hotel</p>
+                            <p class="text-cream/80 leading-relaxed">456 Celebration Avenue<br>New York, NY 10002</p>
+                            <p class="text-cream/80 pt-3"><span class="font-medium text-cream">Dress Code:</span> Black Tie Optional</p>
+                        </div>
+                        
+                        <!-- [BUYER INSTRUCTION]: Replace '#' with your Google Maps link -->
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="inline-block bg-cream text-emerald font-medium py-3 px-6 rounded-md shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-300 w-full sm:w-auto text-sm md:text-base">
+                            View on Google Maps
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RSVP Form Section -->
+        <section id="rsvp" class="py-20 md:py-32 bg-cream/50 overflow-hidden">
+            <div class="container mx-auto px-4 max-w-3xl">
+                <div class="text-center mb-10 md:mb-12" data-aos="fade-up">
+                    <span class="uppercase tracking-[0.2em] text-xs md:text-sm text-emerald-light mb-2 block">Join Us</span>
+                    <h2 class="font-serif text-3xl md:text-5xl text-emerald">RSVP</h2>
+                    <!-- [BUYER INSTRUCTION]: Update RSVP deadline -->
+                    <p class="mt-3 md:mt-4 text-sm md:text-base text-gray-600">Please let us know if you can make it by September 1st, 2026.</p>
+                </div>
+                
+                <div data-aos="fade-up" data-aos-delay="150" class="bg-white/80 backdrop-blur-md p-6 sm:p-8 md:p-12 shadow-2xl rounded-3xl border border-white">
+                    <!-- Form ID used by JS -->
+                    <form id="rsvp-form" class="space-y-5 md:space-y-6">
+                        
+                        <div class="space-y-1.5 md:space-y-2">
+                            <label for="fullName" class="block text-sm font-medium text-emerald">Full Name(s)</label>
+                            <input type="text" id="fullName" name="fullName" required placeholder="Mr. & Mrs. Smith" class="w-full px-4 py-3 text-sm md:text-base rounded-lg border border-gray-200 focus:border-emerald focus:ring-1 focus:ring-emerald outline-none transition-colors bg-white/50">
+                        </div>
+
+                        <div class="space-y-1.5 md:space-y-2">
+                            <label for="attendance" class="block text-sm font-medium text-emerald">Will you be attending?</label>
+                            <select id="attendance" name="attendance" required class="w-full px-4 py-3 text-sm md:text-base rounded-lg border border-gray-200 focus:border-emerald focus:ring-1 focus:ring-emerald outline-none transition-colors bg-white/50">
+                                <option value="" disabled selected>Please select an option</option>
+                                <option value="accepts">Joyfully Accepts</option>
+                                <option value="declines">Regretfully Declines</option>
+                            </select>
+                        </div>
+
+                        <div class="space-y-1.5 md:space-y-2">
+                            <label for="guests" class="block text-sm font-medium text-emerald">Total Number of Guests</label>
+                            <input type="number" id="guests" name="guests" min="1" max="10" value="1" required class="w-full px-4 py-3 text-sm md:text-base rounded-lg border border-gray-200 focus:border-emerald focus:ring-1 focus:ring-emerald outline-none transition-colors bg-white/50">
+                        </div>
+
+                        <div class="space-y-1.5 md:space-y-2">
+                            <label for="dietary" class="block text-sm font-medium text-emerald">Dietary Restrictions (Optional)</label>
+                            <input type="text" id="dietary" name="dietary" placeholder="e.g., Vegetarian, Gluten-Free" class="w-full px-4 py-3 text-sm md:text-base rounded-lg border border-gray-200 focus:border-emerald focus:ring-1 focus:ring-emerald outline-none transition-colors bg-white/50">
+                        </div>
+
+                        <div class="space-y-1.5 md:space-y-2">
+                            <label for="songRequest" class="block text-sm font-medium text-emerald">I promise to dance if you play... (Optional)</label>
+                            <input type="text" id="songRequest" name="songRequest" placeholder="Your favorite dance song" class="w-full px-4 py-3 text-sm md:text-base rounded-lg border border-gray-200 focus:border-emerald focus:ring-1 focus:ring-emerald outline-none transition-colors bg-white/50">
+                        </div>
+
+                        <!-- Form Feedback Messages -->
+                        <div id="form-status" class="hidden p-4 rounded-lg text-sm text-center font-medium"></div>
+
+                        <div class="pt-4">
+                            <button type="submit" id="submit-btn" class="w-full bg-emerald hover:bg-emerald-light text-cream font-medium py-4 px-8 rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300">
+                                Send RSVP
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="site-footer" class="py-12 bg-emerald-dark text-center border-t border-emerald-dark">
+        <div class="container mx-auto px-4" data-aos="fade-in">
+            <h2 class="font-serif text-3xl text-cream mb-4">Emma & James</h2>
+            <p class="text-sm md:text-base text-cream/70 mb-6 italic font-serif">Made with love for Groom & Bride.</p>
+            <p class="text-xs text-cream/40">
+                <!-- [BUYER INSTRUCTION]: Update copyright name -->
+                &copy; <span id="year">2026</span> ForeverTogether. All Rights Reserved.
+            </p>
+        </div>
+    </footer>
+
+    <!-- AOS (Animate on Scroll) JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- Main Logic Scripts -->
+    <script>
+        // Set dynamic copyright year
+        document.getElementById('year').innerText = new Date().getFullYear();
+
+        // Initialize AOS animations
+        AOS.init({
+            duration: 800, // animation duration
+            once: true, // whether animation should happen only once - while scrolling down
+            offset: 100, // offset (in px) from the original trigger point
+            easing: 'ease-out',
+        });
+
+        // --- COUNTDOWN TIMER ---
+        function initializeCountdown() {
+            // [BUYER INSTRUCTION]: Update this to your wedding date. Format: 'Month DD, YYYY HH:MM:SS'
+            const targetDate = new Date('October 12, 2026 00:00:00').getTime();
+
+            const daysElement = document.getElementById('days');
+            const hoursElement = document.getElementById('hours');
+            const minutesElement = document.getElementById('minutes');
+            const secondsElement = document.getElementById('seconds');
+
+            if(!daysElement) return;
+
+            function updateTimer() {
+                const now = new Date().getTime();
+                const distance = targetDate - now;
+
+                if (distance < 0) {
+                    daysElement.innerText = "00";
+                    hoursElement.innerText = "00";
+                    minutesElement.innerText = "00";
+                    secondsElement.innerText = "00";
+                    return;
+                }
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                daysElement.innerText = String(days).padStart(2, '0');
+                hoursElement.innerText = String(hours).padStart(2, '0');
+                minutesElement.innerText = String(minutes).padStart(2, '0');
+                secondsElement.innerText = String(seconds).padStart(2, '0');
+            }
+
+            updateTimer();
+            setInterval(updateTimer, 1000);
+        }
+
+        // --- RSVP FORM CONFIGURATION ---
+        // [BUYER INSTRUCTIONS]:
+        // 1. Go to https://formspree.io and create a free account.
+        // 2. Create a new form.
+        // 3. Copy your unique form endpoint URL (it looks like: https://formspree.io/f/yourUniqueId)
+        // 4. Paste it inside the quotes below, replacing the placeholder.
+        // --------------------------------
+        const FORMSPREE_URL = 'https://formspree.io/f/PLACEHOLDER'; // <-- PASTE YOUR URL HERE
+
+        function initializeRSVPForm() {
+            const form = document.getElementById('rsvp-form');
+            const statusDiv = document.getElementById('form-status');
+            const submitBtn = document.getElementById('submit-btn');
+
+            if(!form) return;
+
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                // Visual feedback during submission
+                submitBtn.disabled = true;
+                submitBtn.innerText = 'Sending...';
+                submitBtn.classList.add('opacity-70', 'cursor-not-allowed');
+
+                const formData = new FormData(form);
+                
+                try {
+                    const response = await fetch(FORMSPREE_URL, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+
+                    if (response.ok) {
+                        statusDiv.className = 'p-4 rounded-lg text-sm text-center font-medium bg-emerald/10 text-emerald block';
+                        statusDiv.innerText = 'Thank you! Your RSVP has been received.';
+                        form.reset();
+                    } else {
+                        statusDiv.className = 'p-4 rounded-lg text-sm text-center font-medium bg-red-100 text-red-700 block';
+                        statusDiv.innerText = 'Oops! There was a problem submitting your form. Please make sure the FORMSPREE_URL is set correctly.';
+                    }
+                } catch (error) {
+                    statusDiv.className = 'p-4 rounded-lg text-sm text-center font-medium bg-red-100 text-red-700 block';
+                    statusDiv.innerText = 'Configuration Error: Please ensure you have added your valid Formspree URL in the code.';
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtn.innerText = 'Send RSVP';
+                    submitBtn.classList.remove('opacity-70', 'cursor-not-allowed');
+                }
+            });
+        }
+
+        // Run when DOM is fully loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeCountdown();
+            initializeRSVPForm();
+        });
+    </script>
+</body>
+</html>
