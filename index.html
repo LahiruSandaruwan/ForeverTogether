@@ -5,12 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- SEO Best Practices -->
     <title>ForeverTogether | Wedding Invitation & RSVP</title>
-    <meta name="description" content="Celebrate our special day with us. Find our story, event details, and RSVP here.">
+    <meta name="description" content="You're invited to celebrate our love. Find our story, event details, and RSVP to our wedding.">
+    <meta name="theme-color" content="#2D4236">
+
+    <!-- Favicon (Inline SVG Data URI — no external file needed) -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💍</text></svg>">
     
-    <!-- Google Fonts: Playfair Display (Serif) & Inter (Sans-serif) -->
+    <!-- Google Fonts: Playfair Display (Serif), Inter (Sans-serif), Cormorant Garamond (Accent) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
     
     <!-- AOS (Animate on Scroll) CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -26,286 +30,577 @@
                     colors: {
                         cream: {
                             DEFAULT: '#FDFBF7',
+                            dark: '#F5F0E8',
                         },
                         emerald: {
                             DEFAULT: '#2D4236',
                             light: '#3A5445',
-                            dark: '#1F2E25'
+                            dark: '#1F2E25',
+                            muted: '#4A6B5D',
+                        },
+                        gold: {
+                            DEFAULT: '#B8976A',
+                            light: '#D4B98A',
+                            dark: '#8A6D47',
+                        },
+                        sage: {
+                            DEFAULT: '#8FAE8B',
+                            light: '#B8D4B4',
+                        },
+                        blush: {
+                            DEFAULT: '#E8D5C4',
+                            light: '#F2E8DC',
                         }
                     },
                     fontFamily: {
-                        serif: ['"Playfair Display"', 'serif'],
-                        sans: ['Inter', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'Georgia', 'serif'],
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        accent: ['"Cormorant Garamond"', 'Georgia', 'serif'],
                     },
                     animation: {
-                        'fade-in-up': 'fadeInUp 1.5s ease-out forwards',
+                        'fade-in-up': 'fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'fade-in-down': 'fadeInDown 1s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'fade-in': 'fadeIn 1.5s ease forwards',
+                        'bounce-slow': 'bounceSlow 2.5s infinite',
+                        'pulse-soft': 'pulseSoft 3s infinite',
+                        'float': 'float 6s ease-in-out infinite',
                     },
                     keyframes: {
                         fadeInUp: {
-                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '0%': { opacity: '0', transform: 'translateY(40px)' },
                             '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeInDown: {
+                            '0%': { opacity: '0', transform: 'translateY(-20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        bounceSlow: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(12px)' },
+                        },
+                        pulseSoft: {
+                            '0%, 100%': { opacity: '0.6' },
+                            '50%': { opacity: '1' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
                         }
                     }
                 }
             }
         }
     </script>
-</head>
-<body class="bg-cream font-sans text-gray-800 antialiased selection:bg-emerald selection:text-cream overflow-x-hidden">
 
-    <!-- Header / Navigation -->
-    <header id="site-header" class="fixed w-full top-0 z-50 bg-cream/90 backdrop-blur-sm border-b border-gray-200 transition-all duration-300">
-        <div class="container mx-auto px-4 h-20 flex items-center justify-center">
-            <!-- [BUYER INSTRUCTION]: Update with your initials -->
-            <a href="#hero" class="font-serif text-2xl text-emerald tracking-wider hover:text-emerald-light transition-colors">E & J</a>
+    <!-- Custom Premium Styles -->
+    <style>
+        /* ---- Custom Scrollbar ---- */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #FDFBF7; }
+        ::-webkit-scrollbar-thumb { background: #B8976A; border-radius: 99px; }
+        ::-webkit-scrollbar-thumb:hover { background: #8A6D47; }
+
+        /* ---- Ornamental Divider ---- */
+        .ornament-divider {
+            display: flex; align-items: center; justify-content: center;
+            padding: 2rem 0; gap: 1rem; opacity: 0.5;
+        }
+        .ornament-divider::before, .ornament-divider::after {
+            content: ''; flex: 1; max-width: 120px; height: 1px;
+            background: linear-gradient(90deg, transparent, #B8976A, transparent);
+        }
+
+        /* ---- Mobile Navigation Overlay ---- */
+        .mobile-nav { 
+            transform: translateX(100%); 
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .mobile-nav.open { transform: translateX(0); }
+
+        /* ---- Parallax Background ---- */
+        .parallax-bg { 
+            background-attachment: fixed; 
+            background-size: cover; 
+            background-position: center; 
+        }
+        @supports (-webkit-touch-callout: none) {
+            .parallax-bg { background-attachment: scroll; }
+        }
+
+        /* ---- Elegant Input Focus Glow ---- */
+        .form-input:focus {
+            box-shadow: 0 0 0 3px rgba(184, 151, 106, 0.15);
+        }
+
+        /* ---- Gallery Masonry ---- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: 280px;
+            gap: 8px;
+        }
+        .gallery-grid .gallery-item:nth-child(1) { grid-row: span 2; }
+        .gallery-grid .gallery-item:nth-child(4) { grid-column: span 2; }
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                grid-auto-rows: 200px;
+            }
+            .gallery-grid .gallery-item:nth-child(4) { grid-column: span 1; }
+        }
+
+        /* ---- Timeline Connector Gradient ---- */
+        .timeline-line {
+            background: linear-gradient(to bottom, transparent, #B8976A 10%, #B8976A 90%, transparent);
+        }
+
+        /* ---- Countdown Digit Flip Effect ---- */
+        .countdown-digit {
+            position: relative;
+            overflow: hidden;
+        }
+        .countdown-digit::after {
+            content: '';
+            position: absolute; top: 50%; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+        }
+
+        /* ---- Header Scroll State ---- */
+        .header-scrolled {
+            background: rgba(253, 251, 247, 0.97) !important;
+            box-shadow: 0 1px 20px rgba(45, 66, 54, 0.08);
+            height: 64px !important;
+        }
+        .header-scrolled .header-inner { height: 64px !important; }
+
+        /* ---- Smooth loading ---- */
+        .page-loaded .load-animate {
+            opacity: 1; transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body class="bg-cream font-sans text-gray-800 antialiased selection:bg-gold/30 selection:text-emerald-dark overflow-x-hidden">
+
+    <!-- ============================================ -->
+    <!-- HEADER / NAVIGATION                          -->
+    <!-- ============================================ -->
+    <header id="site-header" class="fixed w-full top-0 z-50 bg-transparent transition-all duration-500">
+        <div class="header-inner container mx-auto px-4 sm:px-6 h-20 flex items-center justify-between transition-all duration-500">
+            
+            <!-- [BUYER INSTRUCTION]: Update "E & J" with your initials -->
+            <a href="#hero" class="font-serif text-xl md:text-2xl text-emerald tracking-[0.15em] hover:text-gold transition-colors duration-300 z-10">
+                E <span class="text-gold">&</span> J
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm">
+                <a href="#our-story" class="text-emerald/80 hover:text-gold transition-colors duration-300 tracking-wide uppercase font-medium">Our Story</a>
+                <a href="#gallery" class="text-emerald/80 hover:text-gold transition-colors duration-300 tracking-wide uppercase font-medium">Gallery</a>
+                <a href="#schedule" class="text-emerald/80 hover:text-gold transition-colors duration-300 tracking-wide uppercase font-medium">Details</a>
+                <a href="#rsvp" class="bg-emerald text-cream px-5 py-2.5 rounded-full hover:bg-gold transition-colors duration-300 tracking-wide uppercase font-medium text-xs">RSVP</a>
+            </nav>
+
+            <!-- Mobile Hamburger Button -->
+            <button id="mobile-menu-btn" class="md:hidden relative z-50 w-8 h-8 flex flex-col justify-center items-center gap-1.5 group" aria-label="Menu">
+                <span class="hamburger-line w-6 h-0.5 bg-emerald transition-all duration-300 origin-center"></span>
+                <span class="hamburger-line w-6 h-0.5 bg-emerald transition-all duration-300"></span>
+                <span class="hamburger-line w-4 h-0.5 bg-emerald transition-all duration-300 origin-center ml-auto"></span>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Overlay -->
+        <div id="mobile-nav" class="mobile-nav fixed inset-0 bg-cream/98 backdrop-blur-lg z-40 flex flex-col items-center justify-center">
+            <nav class="flex flex-col items-center space-y-8 text-lg">
+                <a href="#our-story" class="mobile-nav-link font-serif text-2xl text-emerald hover:text-gold transition-colors">Our Story</a>
+                <a href="#gallery" class="mobile-nav-link font-serif text-2xl text-emerald hover:text-gold transition-colors">Gallery</a>
+                <a href="#schedule" class="mobile-nav-link font-serif text-2xl text-emerald hover:text-gold transition-colors">Details</a>
+                <div class="w-12 h-px bg-gold/40 my-2"></div>
+                <a href="#rsvp" class="mobile-nav-link bg-emerald text-cream px-8 py-3 rounded-full hover:bg-gold transition-colors font-medium tracking-wider uppercase text-sm">RSVP Now</a>
+            </nav>
+            <p class="absolute bottom-8 text-emerald/40 font-accent text-sm italic">Forever starts here</p>
         </div>
     </header>
 
     <main>
-        <!-- Hero Section -->
-        <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+        <!-- ============================================ -->
+        <!-- HERO SECTION                                 -->
+        <!-- ============================================ -->
+        <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">
             <!-- Background Image -->
             <div class="absolute inset-0 z-0">
-                <!-- [BUYER INSTRUCTION]: Replace the 'src' URL with your own high-quality wedding photo -->
-                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Wedding Couple" class="w-full h-full object-cover object-center" />
-                <!-- Dark Green Tint Overlay -->
-                <div class="absolute inset-0 bg-emerald-dark/60 mix-blend-multiply"></div>
+                <!-- [BUYER INSTRUCTION]: Replace the 'src' URL below with your own high-quality wedding photo -->
+                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 
+                     alt="Wedding Couple" 
+                     class="w-full h-full object-cover object-center scale-105"
+                     loading="eager" />
+                <!-- Multi-Layer Overlay for depth -->
+                <div class="absolute inset-0 bg-gradient-to-b from-emerald-dark/50 via-emerald-dark/40 to-emerald-dark/70"></div>
+                <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(31,46,37,0.4)_100%)]"></div>
             </div>
             
-            <!-- Hero Content Container -->
-            <div class="relative z-10 container mx-auto px-4 text-center text-cream flex flex-col items-center animate-fade-in-up">
-                <span class="uppercase tracking-[0.3em] text-xs md:text-sm lg:text-base mb-4 font-light text-cream/90">Save the Date</span>
+            <!-- Hero Content -->
+            <div class="relative z-10 container mx-auto px-4 text-center text-cream flex flex-col items-center">
+                <!-- Decorative Top Element -->
+                <div class="animate-fade-in-down mb-6 opacity-0" style="animation-delay: 0.2s; animation-fill-mode: forwards;">
+                    <svg class="w-12 h-12 md:w-16 md:h-16 text-gold/60 mx-auto animate-float" viewBox="0 0 64 64" fill="currentColor">
+                        <path d="M32 4C20 4 14 16 14 24c0 12 18 32 18 32s18-20 18-32c0-8-6-20-18-20zm0 28a8 8 0 110-16 8 8 0 010 16z" opacity="0.3"/>
+                        <path d="M32 8c-8 0-14 8-14 16 0 10 14 28 14 28s14-18 14-28c0-8-6-16-14-16zm0 22a6 6 0 110-12 6 6 0 010 12z"/>
+                    </svg>
+                </div>
+
+                <span class="animate-fade-in-up opacity-0 uppercase tracking-[0.4em] text-[10px] sm:text-xs md:text-sm mb-4 md:mb-6 font-light text-gold-light" style="animation-delay: 0.4s; animation-fill-mode: forwards;">
+                    We're Getting Married
+                </span>
                 
-                <!-- [BUYER INSTRUCTION]: Replace with your names. Adjusted text sizes for mobile wrapping. -->
-                <h1 class="font-serif text-5xl sm:text-6xl md:text-8xl lg:text-9xl mb-4 md:mb-6 tracking-wide drop-shadow-md leading-tight">
-                    Emma & James
+                <!-- [BUYER INSTRUCTION]: Replace "Emma" and "James" with your names -->
+                <h1 class="animate-fade-in-up opacity-0 font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl mb-2 md:mb-4 tracking-wide leading-[1.1]" style="animation-delay: 0.6s; animation-fill-mode: forwards;">
+                    Emma
+                </h1>
+                <span class="animate-fade-in-up opacity-0 font-accent text-2xl sm:text-3xl md:text-4xl italic text-gold-light mb-1 md:mb-2" style="animation-delay: 0.8s; animation-fill-mode: forwards;">&</span>
+                <h1 class="animate-fade-in-up opacity-0 font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl mb-6 md:mb-8 tracking-wide leading-[1.1]" style="animation-delay: 1.0s; animation-fill-mode: forwards;">
+                    James
                 </h1>
                 
+                <!-- Decorative Line -->
+                <div class="animate-fade-in opacity-0 w-16 md:w-24 h-px bg-gradient-to-r from-transparent via-gold to-transparent mb-6 md:mb-8" style="animation-delay: 1.2s; animation-fill-mode: forwards;"></div>
+
                 <!-- [BUYER INSTRUCTION]: Replace with your wedding date -->
-                <p class="font-serif text-lg sm:text-xl md:text-3xl mb-10 md:mb-12 italic text-cream/90">
-                    October 12, 2026
+                <p class="animate-fade-in-up opacity-0 font-accent text-lg sm:text-xl md:text-2xl lg:text-3xl mb-10 md:mb-14 tracking-wider text-cream/90" style="animation-delay: 1.3s; animation-fill-mode: forwards;">
+                    October 12, 2026 &nbsp;·&nbsp; New York
                 </p>
 
                 <!-- Countdown Timer -->
-                <div data-aos="zoom-in" data-aos-delay="500" class="flex space-x-3 sm:space-x-4 md:space-x-8 backdrop-blur-sm bg-emerald-dark/40 p-4 sm:p-6 md:p-8 rounded-xl border border-cream/20 shadow-2xl">
-                    <div class="flex flex-col items-center">
-                        <span id="days" class="font-serif text-2xl sm:text-3xl md:text-5xl mb-1">00</span>
-                        <span class="text-[10px] sm:text-xs md:text-sm uppercase tracking-widest text-cream/80">Days</span>
+                <div class="animate-fade-in-up opacity-0 flex space-x-2 sm:space-x-3 md:space-x-4" style="animation-delay: 1.5s; animation-fill-mode: forwards;">
+                    <div class="countdown-digit backdrop-blur-md bg-white/10 border border-white/15 rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 min-w-[60px] sm:min-w-[72px] md:min-w-[90px] shadow-lg">
+                        <span id="days" class="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl block mb-1 tabular-nums">00</span>
+                        <span class="text-[9px] sm:text-[10px] md:text-xs uppercase tracking-[0.2em] text-cream/60 font-sans">Days</span>
                     </div>
-                    <span class="font-serif text-2xl sm:text-3xl md:text-5xl mb-1">:</span>
-                    <div class="flex flex-col items-center">
-                        <span id="hours" class="font-serif text-2xl sm:text-3xl md:text-5xl mb-1">00</span>
-                        <span class="text-[10px] sm:text-xs md:text-sm uppercase tracking-widest text-cream/80">Hours</span>
+                    <span class="font-accent text-xl sm:text-2xl md:text-3xl text-gold/60 self-center pb-4">:</span>
+                    <div class="countdown-digit backdrop-blur-md bg-white/10 border border-white/15 rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 min-w-[60px] sm:min-w-[72px] md:min-w-[90px] shadow-lg">
+                        <span id="hours" class="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl block mb-1 tabular-nums">00</span>
+                        <span class="text-[9px] sm:text-[10px] md:text-xs uppercase tracking-[0.2em] text-cream/60 font-sans">Hours</span>
                     </div>
-                    <span class="font-serif text-2xl sm:text-3xl md:text-5xl mb-1">:</span>
-                    <div class="flex flex-col items-center">
-                        <span id="minutes" class="font-serif text-2xl sm:text-3xl md:text-5xl mb-1">00</span>
-                        <span class="text-[10px] sm:text-xs md:text-sm uppercase tracking-widest text-cream/80">Mins</span>
+                    <span class="font-accent text-xl sm:text-2xl md:text-3xl text-gold/60 self-center pb-4">:</span>
+                    <div class="countdown-digit backdrop-blur-md bg-white/10 border border-white/15 rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 min-w-[60px] sm:min-w-[72px] md:min-w-[90px] shadow-lg">
+                        <span id="minutes" class="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl block mb-1 tabular-nums">00</span>
+                        <span class="text-[9px] sm:text-[10px] md:text-xs uppercase tracking-[0.2em] text-cream/60 font-sans">Mins</span>
                     </div>
-                    <span class="font-serif text-2xl sm:text-3xl md:text-5xl mb-1">:</span>
-                    <div class="flex flex-col items-center">
-                        <span id="seconds" class="font-serif text-2xl sm:text-3xl md:text-5xl mb-1">00</span>
-                        <span class="text-[10px] sm:text-xs md:text-sm uppercase tracking-widest text-cream/80">Secs</span>
+                    <span class="font-accent text-xl sm:text-2xl md:text-3xl text-gold/60 self-center pb-4">:</span>
+                    <div class="countdown-digit backdrop-blur-md bg-white/10 border border-white/15 rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 min-w-[60px] sm:min-w-[72px] md:min-w-[90px] shadow-lg">
+                        <span id="seconds" class="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl block mb-1 tabular-nums">00</span>
+                        <span class="text-[9px] sm:text-[10px] md:text-xs uppercase tracking-[0.2em] text-cream/60 font-sans">Secs</span>
                     </div>
+                </div>
+            </div>
+
+            <!-- Scroll Down Indicator -->
+            <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce-slow">
+                <a href="#invitation" class="flex flex-col items-center text-cream/50 hover:text-gold transition-colors group">
+                    <span class="text-[10px] uppercase tracking-[0.3em] mb-2 font-sans">Scroll</span>
+                    <svg class="w-5 h-5 group-hover:translate-y-1 transition-transform" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+                </a>
+            </div>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- ROMANTIC QUOTE / INVITATION BANNER           -->
+        <!-- ============================================ -->
+        <section id="invitation" class="py-16 md:py-24 bg-cream relative">
+            <div class="container mx-auto px-4 max-w-3xl text-center" data-aos="fade-up">
+                <!-- Ornament -->
+                <div class="ornament-divider mb-8">
+                    <svg class="w-6 h-6 text-gold/60 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                </div>
+
+                <!-- [BUYER INSTRUCTION]: Replace this romantic quote with your own -->
+                <blockquote class="font-accent text-xl sm:text-2xl md:text-3xl lg:text-4xl text-emerald leading-relaxed italic mb-8">
+                    "Whatever our souls are made of, his and mine are the same."
+                </blockquote>
+                <p class="text-gold font-accent text-base md:text-lg tracking-wider">— Emily Brontë</p>
+
+                <!-- Ornament -->
+                <div class="ornament-divider mt-8">
+                    <svg class="w-6 h-6 text-gold/60 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
                 </div>
             </div>
         </section>
 
-        <!-- Our Story Section -->
-        <section id="our-story" class="py-20 md:py-32 bg-white overflow-hidden">
-            <div class="container mx-auto px-4 max-w-5xl">
-                <div class="text-center mb-12 md:mb-16" data-aos="fade-up">
-                    <span class="uppercase tracking-[0.2em] text-xs md:text-sm text-emerald-light/80 mb-2 block">The Journey</span>
-                    <h2 class="font-serif text-3xl md:text-5xl text-emerald">Our Story</h2>
+        <!-- ============================================ -->
+        <!-- OUR STORY SECTION                            -->
+        <!-- ============================================ -->
+        <section id="our-story" class="py-20 md:py-32 bg-white overflow-hidden relative">
+            <!-- Subtle pattern background -->
+            <div class="absolute inset-0 opacity-[0.02]" style="background-image: url('data:image/svg+xml,<svg width=&quot;60&quot; height=&quot;60&quot; viewBox=&quot;0 0 60 60&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;><g fill=&quot;none&quot; fill-rule=&quot;evenodd&quot;><g fill=&quot;%232D4236&quot;><path d=&quot;M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z&quot;/></g></g></svg>');"></div>
+
+            <div class="container mx-auto px-4 sm:px-6 max-w-5xl relative z-10">
+                <div class="text-center mb-14 md:mb-20" data-aos="fade-up">
+                    <span class="uppercase tracking-[0.3em] text-[10px] md:text-xs text-gold mb-3 block font-sans font-medium">The Journey</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-emerald mb-4">Our Story</h2>
+                    <div class="w-16 h-px bg-gradient-to-r from-transparent via-gold to-transparent mx-auto"></div>
                 </div>
                 
                 <div class="relative">
-                    <!-- Vertical Dashed Line (Desktop) -->
-                    <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 border-l-2 border-dashed border-emerald/30"></div>
-                    <!-- Vertical Dashed Line (Mobile) -->
-                    <div class="block md:hidden absolute left-6 h-full w-0.5 border-l-2 border-dashed border-emerald/30"></div>
+                    <!-- Vertical Timeline Line (Desktop — center) -->
+                    <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-px timeline-line"></div>
+                    <!-- Vertical Timeline Line (Mobile — left) -->
+                    <div class="block md:hidden absolute left-6 sm:left-8 h-full w-px timeline-line"></div>
 
-                    <!-- Milestone 1: How We Met -->
-                    <div class="relative flex flex-col md:flex-row items-center justify-between mb-16 md:mb-24 group" data-aos="fade-up">
+                    <!-- ---- Milestone 1: How We Met ---- -->
+                    <div class="relative flex flex-col md:flex-row items-start md:items-center justify-between mb-16 md:mb-28 group" data-aos="fade-up">
                         <!-- Node -->
-                        <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 mt-6 md:mt-0 w-4 h-4 md:w-5 md:h-5 bg-emerald rounded-full border-4 border-white shadow-md z-10 transition-transform duration-300 group-hover:scale-125"></div>
+                        <div class="absolute left-6 sm:left-8 md:left-1/2 transform -translate-x-1/2 top-8 md:top-1/2 md:-translate-y-1/2 w-3 h-3 md:w-4 md:h-4 bg-gold rounded-full border-[3px] border-white shadow-md z-10 transition-all duration-500 group-hover:scale-150 group-hover:shadow-gold/30 group-hover:shadow-lg"></div>
                         
                         <!-- Text Content -->
-                        <div class="w-full md:w-5/12 pl-12 md:pl-0 mb-6 md:mb-0 text-left md:text-right" data-aos="fade-right" data-aos-delay="100">
-                            <!-- [BUYER INSTRUCTION]: Replace date and text -->
-                            <p class="font-serif italic text-emerald-light mb-1">September 2018</p>
-                            <h3 class="text-xl md:text-2xl font-serif text-emerald mb-2 md:mb-3">How We Met</h3>
-                            <p class="text-gray-600 leading-relaxed text-sm md:text-base">
+                        <div class="w-full md:w-[44%] pl-14 sm:pl-16 md:pl-0 mb-6 md:mb-0 md:pr-12 text-left md:text-right" data-aos="fade-right" data-aos-delay="100">
+                            <!-- [BUYER INSTRUCTION]: Replace date and story text below -->
+                            <p class="font-accent italic text-gold text-sm md:text-base mb-1.5">September 2018</p>
+                            <h3 class="text-xl md:text-2xl font-serif text-emerald mb-3">How We Met</h3>
+                            <p class="text-gray-500 leading-relaxed text-sm md:text-[15px]">
                                 It all started at a small coffee shop downtown. We reached for the same distressed copy of an old novel, sparking a conversation that would last for hours. Little did we know, that chance encounter was the beginning of our forever.
                             </p>
                         </div>
                         
                         <!-- Image Container -->
-                        <div class="w-full md:w-5/12 pl-12 md:pl-0" data-aos="fade-left" data-aos-delay="200">
-                            <div class="aspect-square md:aspect-[4/3] rounded-2xl overflow-hidden shadow-lg border-4 border-cream bg-gray-100">
-                                <!-- [BUYER INSTRUCTION]: Replace image URL -->
-                                <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="How We Met" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+                        <div class="w-full md:w-[44%] pl-14 sm:pl-16 md:pl-12" data-aos="fade-left" data-aos-delay="200">
+                            <div class="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl border border-cream-dark/50 group-hover:shadow-2xl transition-shadow duration-500">
+                                <!-- [BUYER INSTRUCTION]: Replace image src URL with your own photo -->
+                                <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                     alt="How We Met" 
+                                     loading="lazy"
+                                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                             </div>
                         </div>
                     </div>
 
-                    <!-- Milestone 2: The First Date -->
-                    <div class="relative flex flex-col md:flex-row-reverse items-center justify-between mb-16 md:mb-24 group" data-aos="fade-up">
+                    <!-- ---- Milestone 2: The First Date ---- -->
+                    <div class="relative flex flex-col md:flex-row-reverse items-start md:items-center justify-between mb-16 md:mb-28 group" data-aos="fade-up">
                         <!-- Node -->
-                        <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 mt-6 md:mt-0 w-4 h-4 md:w-5 md:h-5 bg-emerald rounded-full border-4 border-white shadow-md z-10 transition-transform duration-300 group-hover:scale-125"></div>
+                        <div class="absolute left-6 sm:left-8 md:left-1/2 transform -translate-x-1/2 top-8 md:top-1/2 md:-translate-y-1/2 w-3 h-3 md:w-4 md:h-4 bg-gold rounded-full border-[3px] border-white shadow-md z-10 transition-all duration-500 group-hover:scale-150 group-hover:shadow-gold/30 group-hover:shadow-lg"></div>
                         
                         <!-- Text Content -->
-                        <div class="w-full md:w-5/12 pl-12 md:pl-0 mb-6 md:mb-0 text-left" data-aos="fade-left" data-aos-delay="100">
-                            <!-- [BUYER INSTRUCTION]: Replace date and text -->
-                            <p class="font-serif italic text-emerald-light mb-1">October 2018</p>
-                            <h3 class="text-xl md:text-2xl font-serif text-emerald mb-2 md:mb-3">The First Date</h3>
-                            <p class="text-gray-600 leading-relaxed text-sm md:text-base">
+                        <div class="w-full md:w-[44%] pl-14 sm:pl-16 md:pl-0 mb-6 md:mb-0 md:pl-12 text-left" data-aos="fade-left" data-aos-delay="100">
+                            <!-- [BUYER INSTRUCTION]: Replace date and story text below -->
+                            <p class="font-accent italic text-gold text-sm md:text-base mb-1.5">October 2018</p>
+                            <h3 class="text-xl md:text-2xl font-serif text-emerald mb-3">The First Date</h3>
+                            <p class="text-gray-500 leading-relaxed text-sm md:text-[15px]">
                                 For our first official date, James planned a picnic by the lake at sunset. Between the nervous laughter, shared sandwiches, and the golden hour light, it became wonderfully clear that this was something truly special.
                             </p>
                         </div>
                         
                         <!-- Image Container -->
-                        <div class="w-full md:w-5/12 pl-12 md:pl-0" data-aos="fade-right" data-aos-delay="200">
-                            <div class="aspect-square md:aspect-[4/3] rounded-2xl overflow-hidden shadow-lg border-4 border-cream bg-gray-100">
-                                <!-- [BUYER INSTRUCTION]: Replace image URL -->
-                                <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="The First Date" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+                        <div class="w-full md:w-[44%] pl-14 sm:pl-16 md:pl-0 md:pr-12" data-aos="fade-right" data-aos-delay="200">
+                            <div class="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl border border-cream-dark/50 group-hover:shadow-2xl transition-shadow duration-500">
+                                <!-- [BUYER INSTRUCTION]: Replace image src URL with your own photo -->
+                                <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                     alt="The First Date" 
+                                     loading="lazy"
+                                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                             </div>
                         </div>
                     </div>
 
-                    <!-- Milestone 3: The Proposal -->
-                    <div class="relative flex flex-col md:flex-row items-center justify-between group" data-aos="fade-up">
+                    <!-- ---- Milestone 3: The Proposal ---- -->
+                    <div class="relative flex flex-col md:flex-row items-start md:items-center justify-between group" data-aos="fade-up">
                         <!-- Node -->
-                        <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 mt-6 md:mt-0 w-4 h-4 md:w-5 md:h-5 bg-emerald rounded-full border-4 border-white shadow-md z-10 transition-transform duration-300 group-hover:scale-125"></div>
+                        <div class="absolute left-6 sm:left-8 md:left-1/2 transform -translate-x-1/2 top-8 md:top-1/2 md:-translate-y-1/2 w-3 h-3 md:w-4 md:h-4 bg-gold rounded-full border-[3px] border-white shadow-md z-10 transition-all duration-500 group-hover:scale-150 group-hover:shadow-gold/30 group-hover:shadow-lg"></div>
                         
                         <!-- Text Content -->
-                        <div class="w-full md:w-5/12 pl-12 md:pl-0 mb-6 md:mb-0 text-left md:text-right" data-aos="fade-right" data-aos-delay="100">
-                            <!-- [BUYER INSTRUCTION]: Replace date and text -->
-                            <p class="font-serif italic text-emerald-light mb-1">December 2024</p>
-                            <h3 class="text-xl md:text-2xl font-serif text-emerald mb-2 md:mb-3">The Proposal</h3>
-                            <p class="text-gray-600 leading-relaxed text-sm md:text-base">
+                        <div class="w-full md:w-[44%] pl-14 sm:pl-16 md:pl-0 mb-6 md:mb-0 md:pr-12 text-left md:text-right" data-aos="fade-right" data-aos-delay="100">
+                            <!-- [BUYER INSTRUCTION]: Replace date and story text below -->
+                            <p class="font-accent italic text-gold text-sm md:text-base mb-1.5">December 2024</p>
+                            <h3 class="text-xl md:text-2xl font-serif text-emerald mb-3">The Proposal</h3>
+                            <p class="text-gray-500 leading-relaxed text-sm md:text-[15px]">
                                 Surrounded by winter snow in the mountains where we first went hiking together, James got down on one knee. With tears of joy and surrounded by the quiet beauty of nature, Emma said yes to a lifetime of adventures.
                             </p>
                         </div>
                         
                         <!-- Image Container -->
-                        <div class="w-full md:w-5/12 pl-12 md:pl-0" data-aos="fade-left" data-aos-delay="200">
-                            <div class="aspect-square md:aspect-[4/3] rounded-2xl overflow-hidden shadow-lg border-4 border-cream bg-gray-100">
-                                <!-- [BUYER INSTRUCTION]: Replace image URL -->
-                                <img src="https://images.unsplash.com/photo-1606216494056-b7b51bcbeeb6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="The Proposal" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+                        <div class="w-full md:w-[44%] pl-14 sm:pl-16 md:pl-12" data-aos="fade-left" data-aos-delay="200">
+                            <div class="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl border border-cream-dark/50 group-hover:shadow-2xl transition-shadow duration-500">
+                                <!-- [BUYER INSTRUCTION]: Replace image src URL with your own photo -->
+                                <img src="https://images.unsplash.com/photo-1606216494056-b7b51bcbeeb6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                     alt="The Proposal" 
+                                     loading="lazy"
+                                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                             </div>
                         </div>
                     </div>
-                    
                 </div>
             </div>
         </section>
 
-        <!-- Schedule / Event Details Section -->
-        <section id="schedule" class="py-20 md:py-32 bg-emerald text-cream overflow-hidden">
-            <div class="container mx-auto px-4 max-w-5xl">
-                <div class="text-center mb-12 md:mb-16" data-aos="fade-up">
-                    <span class="uppercase tracking-[0.2em] text-xs md:text-sm text-emerald-light mb-2 block">The Big Day</span>
-                    <h2 class="font-serif text-3xl md:text-5xl">Event Details</h2>
+        <!-- ============================================ -->
+        <!-- PHOTO GALLERY SECTION                        -->
+        <!-- ============================================ -->
+        <section id="gallery" class="py-20 md:py-32 bg-cream-dark overflow-hidden">
+            <div class="container mx-auto px-4 sm:px-6 max-w-6xl">
+                <div class="text-center mb-14 md:mb-20" data-aos="fade-up">
+                    <span class="uppercase tracking-[0.3em] text-[10px] md:text-xs text-gold mb-3 block font-sans font-medium">Captured Moments</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-emerald mb-4">Our Gallery</h2>
+                    <div class="w-16 h-px bg-gradient-to-r from-transparent via-gold to-transparent mx-auto"></div>
+                </div>
+
+                <!-- [BUYER INSTRUCTION]: Replace all 6 image src URLs below with your own photos -->
+                <div class="gallery-grid" data-aos="fade-up" data-aos-delay="100">
+                    <div class="gallery-item rounded-xl overflow-hidden group cursor-pointer">
+                        <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Gallery 1" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"/>
+                    </div>
+                    <div class="gallery-item rounded-xl overflow-hidden group cursor-pointer">
+                        <img src="https://images.unsplash.com/photo-1591604466107-ec97de577aff?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Gallery 2" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"/>
+                    </div>
+                    <div class="gallery-item rounded-xl overflow-hidden group cursor-pointer">
+                        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Gallery 3" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"/>
+                    </div>
+                    <div class="gallery-item rounded-xl overflow-hidden group cursor-pointer">
+                        <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Gallery 4" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"/>
+                    </div>
+                    <div class="gallery-item rounded-xl overflow-hidden group cursor-pointer">
+                        <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Gallery 5" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"/>
+                    </div>
+                    <div class="gallery-item rounded-xl overflow-hidden group cursor-pointer">
+                        <img src="https://images.unsplash.com/photo-1606216794074-735e91aa2c92?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Gallery 6" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"/>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- SCHEDULE / EVENT DETAILS SECTION             -->
+        <!-- ============================================ -->
+        <section id="schedule" class="py-20 md:py-32 bg-emerald text-cream overflow-hidden relative">
+            <!-- Decorative Background Pattern -->
+            <div class="absolute inset-0 opacity-[0.03]" style="background-image: url('data:image/svg+xml,<svg width=&quot;80&quot; height=&quot;80&quot; viewBox=&quot;0 0 80 80&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;><g fill=&quot;%23FDFBF7&quot; fill-rule=&quot;evenodd&quot;><circle cx=&quot;40&quot; cy=&quot;40&quot; r=&quot;2&quot;/><circle cx=&quot;0&quot; cy=&quot;0&quot; r=&quot;2&quot;/><circle cx=&quot;80&quot; cy=&quot;0&quot; r=&quot;2&quot;/><circle cx=&quot;0&quot; cy=&quot;80&quot; r=&quot;2&quot;/><circle cx=&quot;80&quot; cy=&quot;80&quot; r=&quot;2&quot;/></g></svg>');"></div>
+
+            <div class="container mx-auto px-4 sm:px-6 max-w-5xl relative z-10">
+                <div class="text-center mb-14 md:mb-20" data-aos="fade-up">
+                    <span class="uppercase tracking-[0.3em] text-[10px] md:text-xs text-gold-light mb-3 block font-sans font-medium">The Big Day</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl mb-4">Event Details</h2>
+                    <div class="w-16 h-px bg-gradient-to-r from-transparent via-gold to-transparent mx-auto"></div>
                 </div>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
                     <!-- The Ceremony Card -->
-                    <div data-aos="fade-up" data-aos-delay="100" class="border border-cream/20 rounded-2xl p-8 md:p-10 text-center hover:bg-emerald-light/20 transition-colors duration-300">
-                        <div class="w-14 h-14 md:w-16 md:h-16 mx-auto mb-6 flex items-center justify-center rounded-full bg-cream/10 border border-cream/30">
-                            <svg class="w-6 h-6 md:w-8 md:h-8 text-cream" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <div data-aos="fade-up" data-aos-delay="100" class="bg-white/[0.06] backdrop-blur-sm border border-cream/10 rounded-2xl p-8 md:p-10 text-center hover:bg-white/[0.1] hover:border-gold/20 transition-all duration-500 group">
+                        <div class="w-16 h-16 mx-auto mb-6 flex items-center justify-center rounded-full bg-gold/10 border border-gold/20 group-hover:bg-gold/20 transition-colors duration-500">
+                            <svg class="w-7 h-7 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                         </div>
                         
-                        <!-- [BUYER INSTRUCTION]: Update Event Details -->
+                        <!-- [BUYER INSTRUCTION]: Update Ceremony Details below -->
                         <h3 class="text-2xl md:text-3xl font-serif mb-2">The Ceremony</h3>
-                        <p class="text-base md:text-lg italic text-cream/80 mb-6">4:00 PM - 5:00 PM</p>
+                        <p class="text-base md:text-lg font-accent italic text-gold-light mb-6">4:00 PM — 5:00 PM</p>
                         
-                        <div class="mb-8 space-y-1 md:space-y-2 text-sm md:text-base">
-                            <p class="font-medium">St. Patrick's Cathedral</p>
-                            <p class="text-cream/80 leading-relaxed">123 Wedding Lane<br>New York, NY 10001</p>
-                            <p class="text-cream/80 pt-3"><span class="font-medium text-cream">Dress Code:</span> Black Tie Optional</p>
+                        <div class="mb-8 space-y-2 text-sm md:text-[15px]">
+                            <p class="font-medium text-cream">St. Patrick's Cathedral</p>
+                            <p class="text-cream/60 leading-relaxed">123 Wedding Lane<br>New York, NY 10001</p>
+                            <p class="text-cream/60 pt-2"><span class="text-gold-light font-medium">Dress Code:</span> Black Tie Optional</p>
                         </div>
                         
                         <!-- [BUYER INSTRUCTION]: Replace '#' with your Google Maps link -->
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="inline-block bg-cream text-emerald font-medium py-3 px-6 rounded-md shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-300 w-full sm:w-auto text-sm md:text-base">
-                            View on Google Maps
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-cream/10 hover:bg-gold text-cream font-medium py-3 px-6 rounded-full border border-cream/20 hover:border-gold shadow-sm hover:shadow-lg transition-all duration-300 text-sm group-hover:border-gold/40">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                            View on Map
                         </a>
                     </div>
 
                     <!-- The Reception Card -->
-                    <div data-aos="fade-up" data-aos-delay="200" class="border border-cream/20 rounded-2xl p-8 md:p-10 text-center hover:bg-emerald-light/20 transition-colors duration-300">
-                        <div class="w-14 h-14 md:w-16 md:h-16 mx-auto mb-6 flex items-center justify-center rounded-full bg-cream/10 border border-cream/30">
-                            <svg class="w-6 h-6 md:w-8 md:h-8 text-cream" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 15.546c-.523 0-1.046.151-1.5.454a2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.701 2.701 0 00-1.5-.454M9 6v2m3-2v2m3-2v2M9 3h.01M12 3h.01M15 3h.01M21 21v-7a2 2 0 00-2-2H5a2 2 0 00-2 2v7h18zm-3-9v-2a2 2 0 00-2-2H8a2 2 0 00-2 2v2h12z"></path></svg>
+                    <div data-aos="fade-up" data-aos-delay="200" class="bg-white/[0.06] backdrop-blur-sm border border-cream/10 rounded-2xl p-8 md:p-10 text-center hover:bg-white/[0.1] hover:border-gold/20 transition-all duration-500 group">
+                        <div class="w-16 h-16 mx-auto mb-6 flex items-center justify-center rounded-full bg-gold/10 border border-gold/20 group-hover:bg-gold/20 transition-colors duration-500">
+                            <svg class="w-7 h-7 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 15.546c-.523 0-1.046.151-1.5.454a2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0A2.701 2.701 0 003 15.546M9 6v2m3-2v2m3-2v2M9 3h.01M12 3h.01M15 3h.01M21 21v-7a2 2 0 00-2-2H5a2 2 0 00-2 2v7h18zm-3-9v-2a2 2 0 00-2-2H8a2 2 0 00-2 2v2h12z"></path></svg>
                         </div>
                         
-                        <!-- [BUYER INSTRUCTION]: Update Event Details -->
+                        <!-- [BUYER INSTRUCTION]: Update Reception Details below -->
                         <h3 class="text-2xl md:text-3xl font-serif mb-2">The Reception</h3>
-                        <p class="text-base md:text-lg italic text-cream/80 mb-6">5:30 PM - Midnight</p>
+                        <p class="text-base md:text-lg font-accent italic text-gold-light mb-6">5:30 PM — Midnight</p>
                         
-                        <div class="mb-8 space-y-1 md:space-y-2 text-sm md:text-base">
-                            <p class="font-medium">The Grand Plaza Hotel</p>
-                            <p class="text-cream/80 leading-relaxed">456 Celebration Avenue<br>New York, NY 10002</p>
-                            <p class="text-cream/80 pt-3"><span class="font-medium text-cream">Dress Code:</span> Black Tie Optional</p>
+                        <div class="mb-8 space-y-2 text-sm md:text-[15px]">
+                            <p class="font-medium text-cream">The Grand Plaza Hotel</p>
+                            <p class="text-cream/60 leading-relaxed">456 Celebration Avenue<br>New York, NY 10002</p>
+                            <p class="text-cream/60 pt-2"><span class="text-gold-light font-medium">Dress Code:</span> Black Tie Optional</p>
                         </div>
                         
                         <!-- [BUYER INSTRUCTION]: Replace '#' with your Google Maps link -->
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="inline-block bg-cream text-emerald font-medium py-3 px-6 rounded-md shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-300 w-full sm:w-auto text-sm md:text-base">
-                            View on Google Maps
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-cream/10 hover:bg-gold text-cream font-medium py-3 px-6 rounded-full border border-cream/20 hover:border-gold shadow-sm hover:shadow-lg transition-all duration-300 text-sm group-hover:border-gold/40">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                            View on Map
                         </a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- RSVP Form Section -->
-        <section id="rsvp" class="py-20 md:py-32 bg-cream/50 overflow-hidden">
-            <div class="container mx-auto px-4 max-w-3xl">
-                <div class="text-center mb-10 md:mb-12" data-aos="fade-up">
-                    <span class="uppercase tracking-[0.2em] text-xs md:text-sm text-emerald-light mb-2 block">Join Us</span>
-                    <h2 class="font-serif text-3xl md:text-5xl text-emerald">RSVP</h2>
-                    <!-- [BUYER INSTRUCTION]: Update RSVP deadline -->
-                    <p class="mt-3 md:mt-4 text-sm md:text-base text-gray-600">Please let us know if you can make it by September 1st, 2026.</p>
+        <!-- ============================================ -->
+        <!-- RSVP FORM SECTION                            -->
+        <!-- ============================================ -->
+        <section id="rsvp" class="py-20 md:py-32 bg-cream relative overflow-hidden">
+            <!-- Decorative Background -->
+            <div class="absolute top-0 right-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+            <div class="absolute bottom-0 left-0 w-96 h-96 bg-sage/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
+
+            <div class="container mx-auto px-4 sm:px-6 max-w-2xl relative z-10">
+                <div class="text-center mb-10 md:mb-14" data-aos="fade-up">
+                    <span class="uppercase tracking-[0.3em] text-[10px] md:text-xs text-gold mb-3 block font-sans font-medium">Join Us</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-emerald mb-4">RSVP</h2>
+                    <div class="w-16 h-px bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mb-4"></div>
+                    <!-- [BUYER INSTRUCTION]: Update RSVP deadline below -->
+                    <p class="text-sm md:text-base text-gray-500 font-accent italic">Kindly respond by September 1st, 2026</p>
                 </div>
                 
-                <div data-aos="fade-up" data-aos-delay="150" class="bg-white/80 backdrop-blur-md p-6 sm:p-8 md:p-12 shadow-2xl rounded-3xl border border-white">
-                    <!-- Form ID used by JS -->
+                <div data-aos="fade-up" data-aos-delay="100" class="bg-white p-6 sm:p-8 md:p-12 shadow-xl shadow-emerald/5 rounded-2xl border border-cream-dark">
                     <form id="rsvp-form" class="space-y-5 md:space-y-6">
                         
-                        <div class="space-y-1.5 md:space-y-2">
-                            <label for="fullName" class="block text-sm font-medium text-emerald">Full Name(s)</label>
-                            <input type="text" id="fullName" name="fullName" required placeholder="Mr. & Mrs. Smith" class="w-full px-4 py-3 text-sm md:text-base rounded-lg border border-gray-200 focus:border-emerald focus:ring-1 focus:ring-emerald outline-none transition-colors bg-white/50">
+                        <div class="space-y-1.5">
+                            <label for="fullName" class="block text-sm font-medium text-emerald tracking-wide">Full Name(s)</label>
+                            <input type="text" id="fullName" name="fullName" required placeholder="Mr. & Mrs. Smith" 
+                                   class="form-input w-full px-4 py-3.5 text-sm md:text-base rounded-xl border border-gray-200 focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition-all bg-cream/30 placeholder:text-gray-400">
                         </div>
 
-                        <div class="space-y-1.5 md:space-y-2">
-                            <label for="attendance" class="block text-sm font-medium text-emerald">Will you be attending?</label>
-                            <select id="attendance" name="attendance" required class="w-full px-4 py-3 text-sm md:text-base rounded-lg border border-gray-200 focus:border-emerald focus:ring-1 focus:ring-emerald outline-none transition-colors bg-white/50">
-                                <option value="" disabled selected>Please select an option</option>
-                                <option value="accepts">Joyfully Accepts</option>
-                                <option value="declines">Regretfully Declines</option>
-                            </select>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div class="space-y-1.5">
+                                <label for="attendance" class="block text-sm font-medium text-emerald tracking-wide">Will you be attending?</label>
+                                <div class="relative">
+                                    <select id="attendance" name="attendance" required 
+                                            class="form-input w-full px-4 py-3.5 text-sm md:text-base rounded-xl border border-gray-200 focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition-all bg-cream/30 appearance-none pr-10">
+                                        <option value="" disabled selected>Please select</option>
+                                        <option value="accepts">Joyfully Accepts ✨</option>
+                                        <option value="declines">Regretfully Declines</option>
+                                    </select>
+                                    <!-- Custom Dropdown Arrow -->
+                                    <svg class="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gold/60 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                                </div>
+                            </div>
+
+                            <div class="space-y-1.5">
+                                <label for="guests" class="block text-sm font-medium text-emerald tracking-wide">Number of Guests</label>
+                                <input type="number" id="guests" name="guests" min="1" max="10" value="1" required 
+                                       class="form-input w-full px-4 py-3.5 text-sm md:text-base rounded-xl border border-gray-200 focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition-all bg-cream/30">
+                            </div>
                         </div>
 
-                        <div class="space-y-1.5 md:space-y-2">
-                            <label for="guests" class="block text-sm font-medium text-emerald">Total Number of Guests</label>
-                            <input type="number" id="guests" name="guests" min="1" max="10" value="1" required class="w-full px-4 py-3 text-sm md:text-base rounded-lg border border-gray-200 focus:border-emerald focus:ring-1 focus:ring-emerald outline-none transition-colors bg-white/50">
+                        <div class="space-y-1.5">
+                            <label for="dietary" class="block text-sm font-medium text-emerald tracking-wide">Dietary Restrictions <span class="text-gray-400 font-normal">(Optional)</span></label>
+                            <input type="text" id="dietary" name="dietary" placeholder="e.g., Vegetarian, Gluten-Free, Nut Allergy" 
+                                   class="form-input w-full px-4 py-3.5 text-sm md:text-base rounded-xl border border-gray-200 focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition-all bg-cream/30 placeholder:text-gray-400">
                         </div>
 
-                        <div class="space-y-1.5 md:space-y-2">
-                            <label for="dietary" class="block text-sm font-medium text-emerald">Dietary Restrictions (Optional)</label>
-                            <input type="text" id="dietary" name="dietary" placeholder="e.g., Vegetarian, Gluten-Free" class="w-full px-4 py-3 text-sm md:text-base rounded-lg border border-gray-200 focus:border-emerald focus:ring-1 focus:ring-emerald outline-none transition-colors bg-white/50">
-                        </div>
-
-                        <div class="space-y-1.5 md:space-y-2">
-                            <label for="songRequest" class="block text-sm font-medium text-emerald">I promise to dance if you play... (Optional)</label>
-                            <input type="text" id="songRequest" name="songRequest" placeholder="Your favorite dance song" class="w-full px-4 py-3 text-sm md:text-base rounded-lg border border-gray-200 focus:border-emerald focus:ring-1 focus:ring-emerald outline-none transition-colors bg-white/50">
+                        <div class="space-y-1.5">
+                            <label for="songRequest" class="block text-sm font-medium text-emerald tracking-wide">Song Request <span class="text-gray-400 font-normal">(Optional)</span></label>
+                            <input type="text" id="songRequest" name="songRequest" placeholder="I promise to dance if you play..." 
+                                   class="form-input w-full px-4 py-3.5 text-sm md:text-base rounded-xl border border-gray-200 focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition-all bg-cream/30 placeholder:text-gray-400">
                         </div>
 
                         <!-- Form Feedback Messages -->
-                        <div id="form-status" class="hidden p-4 rounded-lg text-sm text-center font-medium"></div>
+                        <div id="form-status" class="hidden p-4 rounded-xl text-sm text-center font-medium"></div>
 
-                        <div class="pt-4">
-                            <button type="submit" id="submit-btn" class="w-full bg-emerald hover:bg-emerald-light text-cream font-medium py-4 px-8 rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300">
-                                Send RSVP
+                        <div class="pt-2">
+                            <button type="submit" id="submit-btn" class="w-full bg-emerald hover:bg-emerald-light text-cream font-medium py-4 px-8 rounded-xl shadow-lg shadow-emerald/20 hover:shadow-xl hover:shadow-emerald/30 hover:-translate-y-0.5 transition-all duration-300 tracking-wide uppercase text-sm flex items-center justify-center gap-2 group">
+                                <span>Send RSVP</span>
+                                <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                             </button>
                         </div>
                     </form>
@@ -314,132 +609,219 @@
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer id="site-footer" class="py-12 bg-emerald-dark text-center border-t border-emerald-dark">
-        <div class="container mx-auto px-4" data-aos="fade-in">
-            <h2 class="font-serif text-3xl text-cream mb-4">Emma & James</h2>
-            <p class="text-sm md:text-base text-cream/70 mb-6 italic font-serif">Made with love for Groom & Bride.</p>
-            <p class="text-xs text-cream/40">
-                <!-- [BUYER INSTRUCTION]: Update copyright name -->
-                &copy; <span id="year">2026</span> ForeverTogether. All Rights Reserved.
-            </p>
+    <!-- ============================================ -->
+    <!-- FOOTER                                       -->
+    <!-- ============================================ -->
+    <footer id="site-footer" class="bg-emerald-dark text-center relative overflow-hidden">
+        <!-- Decorative top border -->
+        <div class="h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent"></div>
+
+        <!-- Main Footer Content -->
+        <div class="py-16 md:py-20">
+            <div class="container mx-auto px-4 sm:px-6" data-aos="fade-up">
+                <!-- Names -->
+                <!-- [BUYER INSTRUCTION]: Update names below -->
+                <h2 class="font-serif text-3xl md:text-4xl text-cream mb-2">Emma & James</h2>
+                <p class="font-accent text-gold-light italic text-base md:text-lg mb-8">October 12, 2026</p>
+
+                <!-- Footer Navigation -->
+                <nav class="flex flex-wrap justify-center gap-6 md:gap-8 mb-10 text-sm">
+                    <a href="#our-story" class="text-cream/50 hover:text-gold transition-colors duration-300 tracking-wide">Our Story</a>
+                    <a href="#gallery" class="text-cream/50 hover:text-gold transition-colors duration-300 tracking-wide">Gallery</a>
+                    <a href="#schedule" class="text-cream/50 hover:text-gold transition-colors duration-300 tracking-wide">Details</a>
+                    <a href="#rsvp" class="text-cream/50 hover:text-gold transition-colors duration-300 tracking-wide">RSVP</a>
+                </nav>
+
+                <!-- Social Media Placeholders -->
+                <!-- [BUYER INSTRUCTION]: Replace '#' with your social media profile links. Delete any you don't need. -->
+                <div class="flex justify-center gap-4 mb-10">
+                    <a href="#" aria-label="Instagram" class="w-10 h-10 rounded-full border border-cream/15 flex items-center justify-center text-cream/40 hover:text-gold hover:border-gold/40 transition-all duration-300">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    </a>
+                    <a href="#" aria-label="Facebook" class="w-10 h-10 rounded-full border border-cream/15 flex items-center justify-center text-cream/40 hover:text-gold hover:border-gold/40 transition-all duration-300">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    </a>
+                    <a href="#" aria-label="Pinterest" class="w-10 h-10 rounded-full border border-cream/15 flex items-center justify-center text-cream/40 hover:text-gold hover:border-gold/40 transition-all duration-300">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 01.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12.017 24c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641 0 12.017 0z"/></svg>
+                    </a>
+                </div>
+
+                <!-- Ornamental Divider -->
+                <div class="ornament-divider !py-0 mb-6">
+                    <svg class="w-5 h-5 text-gold/40 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                </div>
+
+                <!-- [BUYER INSTRUCTION]: Update "Made with love" text and copyright name -->
+                <p class="text-cream/40 font-accent italic text-sm mb-4">Made with love, for our forever.</p>
+                <p class="text-[11px] text-cream/25 tracking-wide">
+                    &copy; <span id="year">2026</span> ForeverTogether. All Rights Reserved.
+                </p>
+            </div>
         </div>
     </footer>
+
+    <!-- ============================================ -->
+    <!-- SCRIPTS                                      -->
+    <!-- ============================================ -->
 
     <!-- AOS (Animate on Scroll) JS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
-    <!-- Main Logic Scripts -->
     <script>
-        // Set dynamic copyright year
+    (function() {
+        'use strict';
+
+        // ---- Copyright Year ----
         document.getElementById('year').innerText = new Date().getFullYear();
 
-        // Initialize AOS animations
+        // ---- Initialize AOS ----
         AOS.init({
-            duration: 800, // animation duration
-            once: true, // whether animation should happen only once - while scrolling down
-            offset: 100, // offset (in px) from the original trigger point
-            easing: 'ease-out',
+            duration: 900,
+            once: true,
+            offset: 80,
+            easing: 'ease-out-cubic',
         });
 
-        // --- COUNTDOWN TIMER ---
-        function initializeCountdown() {
-            // [BUYER INSTRUCTION]: Update this to your wedding date. Format: 'Month DD, YYYY HH:MM:SS'
-            const targetDate = new Date('October 12, 2026 00:00:00').getTime();
-
-            const daysElement = document.getElementById('days');
-            const hoursElement = document.getElementById('hours');
-            const minutesElement = document.getElementById('minutes');
-            const secondsElement = document.getElementById('seconds');
-
-            if(!daysElement) return;
-
-            function updateTimer() {
-                const now = new Date().getTime();
-                const distance = targetDate - now;
-
-                if (distance < 0) {
-                    daysElement.innerText = "00";
-                    hoursElement.innerText = "00";
-                    minutesElement.innerText = "00";
-                    secondsElement.innerText = "00";
-                    return;
-                }
-
-                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-                daysElement.innerText = String(days).padStart(2, '0');
-                hoursElement.innerText = String(hours).padStart(2, '0');
-                minutesElement.innerText = String(minutes).padStart(2, '0');
-                secondsElement.innerText = String(seconds).padStart(2, '0');
+        // ---- Scroll-Aware Header ----
+        const header = document.getElementById('site-header');
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            if (scrollY > 60) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
             }
+            lastScroll = scrollY;
+        }, { passive: true });
 
-            updateTimer();
-            setInterval(updateTimer, 1000);
+        // ---- Mobile Menu Toggle ----
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileNav = document.getElementById('mobile-nav');
+        const hamburgerLines = menuBtn.querySelectorAll('.hamburger-line');
+        let menuOpen = false;
+
+        function toggleMenu() {
+            menuOpen = !menuOpen;
+            mobileNav.classList.toggle('open');
+            document.body.style.overflow = menuOpen ? 'hidden' : '';
+            
+            // Animate hamburger to X
+            if (menuOpen) {
+                hamburgerLines[0].style.transform = 'rotate(45deg) translate(4px, 4px)';
+                hamburgerLines[1].style.opacity = '0';
+                hamburgerLines[2].style.transform = 'rotate(-45deg) translate(4px, -4px)';
+                hamburgerLines[2].style.width = '1.5rem';
+            } else {
+                hamburgerLines[0].style.transform = '';
+                hamburgerLines[1].style.opacity = '1';
+                hamburgerLines[2].style.transform = '';
+                hamburgerLines[2].style.width = '1rem';
+            }
         }
 
-        // --- RSVP FORM CONFIGURATION ---
-        // [BUYER INSTRUCTIONS]:
-        // 1. Go to https://formspree.io and create a free account.
-        // 2. Create a new form.
-        // 3. Copy your unique form endpoint URL (it looks like: https://formspree.io/f/yourUniqueId)
-        // 4. Paste it inside the quotes below, replacing the placeholder.
-        // --------------------------------
-        const FORMSPREE_URL = 'https://formspree.io/f/PLACEHOLDER'; // <-- PASTE YOUR URL HERE
+        menuBtn.addEventListener('click', toggleMenu);
+        
+        // Close mobile nav on link click
+        mobileNav.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                if (menuOpen) toggleMenu();
+            });
+        });
+
+        // ---- COUNTDOWN TIMER ----
+        // [BUYER INSTRUCTION]: Change the date below to YOUR wedding date.
+        //                      Format: 'Month DD, YYYY HH:MM:SS'
+        const WEDDING_DATE = 'October 12, 2026 16:00:00';
+
+        function initializeCountdown() {
+            const targetDate = new Date(WEDDING_DATE).getTime();
+            const els = {
+                days: document.getElementById('days'),
+                hours: document.getElementById('hours'),
+                minutes: document.getElementById('minutes'),
+                seconds: document.getElementById('seconds'),
+            };
+            if (!els.days) return;
+
+            function pad(n) { return String(n).padStart(2, '0'); }
+
+            function update() {
+                const diff = targetDate - Date.now();
+                if (diff <= 0) {
+                    els.days.textContent = els.hours.textContent = els.minutes.textContent = els.seconds.textContent = '00';
+                    return;
+                }
+                els.days.textContent = pad(Math.floor(diff / 864e5));
+                els.hours.textContent = pad(Math.floor((diff % 864e5) / 36e5));
+                els.minutes.textContent = pad(Math.floor((diff % 36e5) / 6e4));
+                els.seconds.textContent = pad(Math.floor((diff % 6e4) / 1e3));
+            }
+            update();
+            setInterval(update, 1000);
+        }
+
+        // ---- RSVP FORM HANDLER ----
+        // ===========================================================
+        // [BUYER INSTRUCTIONS — READ THIS!]:
+        //
+        // To receive RSVP submissions in your email inbox:
+        //
+        //   1. Go to https://formspree.io and create a FREE account.
+        //   2. Click "New Form" and give it a name (e.g. "Wedding RSVP").
+        //   3. Copy the endpoint URL it gives you.
+        //      It will look like: https://formspree.io/f/xAbCdEfG
+        //   4. Paste that URL between the quotes below, replacing
+        //      the placeholder text.
+        //   5. Save the file — that's it! You'll get emails instantly.
+        //
+        // ===========================================================
+        const FORMSPREE_URL = 'https://formspree.io/f/PLACEHOLDER';
 
         function initializeRSVPForm() {
             const form = document.getElementById('rsvp-form');
             const statusDiv = document.getElementById('form-status');
             const submitBtn = document.getElementById('submit-btn');
-
-            if(!form) return;
+            if (!form) return;
 
             form.addEventListener('submit', async function(e) {
                 e.preventDefault();
-                
-                // Visual feedback during submission
+
                 submitBtn.disabled = true;
-                submitBtn.innerText = 'Sending...';
+                submitBtn.innerHTML = '<svg class="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"/></svg><span>Sending...</span>';
                 submitBtn.classList.add('opacity-70', 'cursor-not-allowed');
 
-                const formData = new FormData(form);
-                
                 try {
-                    const response = await fetch(FORMSPREE_URL, {
+                    const res = await fetch(FORMSPREE_URL, {
                         method: 'POST',
-                        body: formData,
-                        headers: {
-                            'Accept': 'application/json'
-                        }
+                        body: new FormData(form),
+                        headers: { 'Accept': 'application/json' },
                     });
 
-                    if (response.ok) {
-                        statusDiv.className = 'p-4 rounded-lg text-sm text-center font-medium bg-emerald/10 text-emerald block';
-                        statusDiv.innerText = 'Thank you! Your RSVP has been received.';
+                    if (res.ok) {
+                        statusDiv.className = 'p-4 rounded-xl text-sm text-center font-medium bg-sage-light/30 text-emerald block border border-sage/30';
+                        statusDiv.innerHTML = '✨ Thank you! Your RSVP has been received. We can\'t wait to celebrate with you!';
                         form.reset();
                     } else {
-                        statusDiv.className = 'p-4 rounded-lg text-sm text-center font-medium bg-red-100 text-red-700 block';
-                        statusDiv.innerText = 'Oops! There was a problem submitting your form. Please make sure the FORMSPREE_URL is set correctly.';
+                        throw new Error('Server error');
                     }
-                } catch (error) {
-                    statusDiv.className = 'p-4 rounded-lg text-sm text-center font-medium bg-red-100 text-red-700 block';
-                    statusDiv.innerText = 'Configuration Error: Please ensure you have added your valid Formspree URL in the code.';
+                } catch (err) {
+                    statusDiv.className = 'p-4 rounded-xl text-sm text-center font-medium bg-red-50 text-red-600 block border border-red-200';
+                    statusDiv.innerHTML = '⚠️ There was a problem submitting your RSVP. Please check your internet connection or contact us directly.';
                 } finally {
                     submitBtn.disabled = false;
-                    submitBtn.innerText = 'Send RSVP';
+                    submitBtn.innerHTML = '<span>Send RSVP</span><svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>';
                     submitBtn.classList.remove('opacity-70', 'cursor-not-allowed');
                 }
             });
         }
 
-        // Run when DOM is fully loaded
+        // ---- Initialize Everything ----
         document.addEventListener('DOMContentLoaded', () => {
             initializeCountdown();
             initializeRSVPForm();
         });
+    })();
     </script>
 </body>
 </html>
